@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://ce3x5d822p868"]
+
+[ext_resource type="Texture2D" uid="uid://x7pxc6ekivhc" path="res://assets/World/wall.png" id="1_tp3g4"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vju52"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_wtrxt"]
+[ext_resource type="PackedScene" uid="uid://bnduuum8mgduw" path="res://scenes/player_body.tscn" id="4_vosf5"]
+[ext_resource type="PackedScene" uid="uid://bngvkuwtytb6c" path="res://scenes/enemy_body.tscn" id="5_74hyn"]
+[ext_resource type="PackedScene" uid="uid://k0eb2gfdoxpu" path="res://scenes/joystick.tscn" id="6_fshi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk3xe"]
+size = Vector2(26, 755)
+
+[sub_resource type="Resource" id="Resource_vrmtk"]
+script = ExtResource("3_wtrxt")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="world_game" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 367.5)
+shape = SubResource("RectangleShape2D_lk3xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, 369.25)
+scale = Vector2(0.14, 3.7475)
+texture = ExtResource("1_tp3g4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1167, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1, 367.5)
+shape = SubResource("RectangleShape2D_lk3xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(0, 369.25)
+scale = Vector2(0.14, 3.7475)
+texture = ExtResource("1_tp3g4")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1137, 729)
+rotation = 1.5708
+scale = Vector2(1.505, 1.505)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1, 367.5)
+shape = SubResource("RectangleShape2D_lk3xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(0, 369.25)
+scale = Vector2(0.14, 3.7475)
+texture = ExtResource("1_tp3g4")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(1163, 0.999999)
+rotation = 1.5708
+scale = Vector2(1.57, 1.57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1, 367.5)
+shape = SubResource("RectangleShape2D_lk3xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+position = Vector2(0, 369.25)
+scale = Vector2(0.14, 3.7475)
+texture = ExtResource("1_tp3g4")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+position = Vector2(93, 93)
+script = ExtResource("2_vju52")
+follow_mode = 2
+follow_target = NodePath("../PlayerBody")
+tween_resource = SubResource("Resource_vrmtk")
+
+[node name="PlayerBody" parent="." instance=ExtResource("4_vosf5")]
+position = Vector2(93, 93)
+scale = Vector2(0.175, 0.175)
+
+[node name="Enemy" parent="." instance=ExtResource("5_74hyn")]
+position = Vector2(1080, 588)
+scale = Vector2(0.375, 0.375)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_74hyn")]
+position = Vector2(447, 372)
+scale = Vector2(0.43, 0.43)
+
+[node name="Enemy3" parent="." instance=ExtResource("5_74hyn")]
+position = Vector2(870, 534)
+scale = Vector2(0.405, 0.405)
+
+[node name="Enemy4" parent="." instance=ExtResource("5_74hyn")]
+position = Vector2(1089, 78)
+scale = Vector2(0.42, 0.42)
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("6_fshi6")]
+offset_left = 389.0
+offset_top = 709.0
+offset_right = 429.0
+offset_bottom = 749.0

@@ -54,9 +54,9 @@ func _physics_process(delta):
 	##look_at(get_global_mouse_position())
 	##Cambiar a get_nearest_enemy_position()
 	
-	if Input.is_action_just_pressed("LMB"):
-		fire()
-
+	"""if Input.is_action_just_pressed("LMB"):
+		fire()"""
+		
 func fire():
 	"""var bullet_instance = bullet.instance()
 	bullet_instance.position = get_global_position()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bngvkuwtytb6c"]
+
+[ext_resource type="Texture2D" uid="uid://ddcv5soflhs4w" path="res://assets/Enemy/enemy_skin.png" id="1_7s4bi"]
+[ext_resource type="Script" path="res://scripts/enemy_behavior.gd" id="1_ejh1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n23x"]
+custom_solver_bias = 0.038
+size = Vector2(145, 145)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ejh1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7s4bi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_7n23x")
